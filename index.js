@@ -81,7 +81,19 @@ app.post('/api/guide', (req, res) => {
 });
 
 app.put('/api/guide/:guideId', (req, res) => {
+  let guideId = req.params.guideId;
+  let update = req.body;
 
+  Guide.findByIdAndUpdate(guideId, update, (err, guideUpdated) => {
+    if (err) {
+      res.status(500).send({
+        message: `Error to update the guide: ${err}`
+      });
+    }
+    res.status(200).send({
+      guide: guideUpdated
+    });
+  });
 });
 
 app.delete('/api/guide/:guideId', (req, res) => {
