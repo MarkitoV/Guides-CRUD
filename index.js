@@ -15,8 +15,6 @@ mongoose.connect(config.db, {
   .then(db => console.log('DB connected'))
   .catch(err => console.log(err))
 
-// Middlewares
-
 // Starting the server
 
 app.listen(config.port, () => {
